@@ -1,0 +1,193 @@
+
+body
+	-webkit-app-region : drag
+	border-collapse    : collapse
+	margin      : 0px
+	background  : hsl(205,10%,7%)
+	font-family : 'helvetica neue'
+	font-size   : 2vw
+	color       : white
+	&.dev
+		&, *
+			border : 1px hsla(200,100%,50%, .5) solid
+
+$hud : rgba(white, .5)
+$selected : rgba(white, 1)
+
+.container
+	height : 100%
+	&.full
+		height : 90%
+		background-size       : cover
+		background-position   : center
+		background-attachment : fixed
+		&:first-of-type, &:last-of-type
+			height : 100%
+	&.projects
+		height     : auto
+		text-align : center
+		.project
+			position      : relative
+			display       : inline-block
+			width         : 75vw
+			height        : 75vw
+			margin-bottom : 10vw
+			.full
+				position   : absolute
+				z-index    : 1
+				text-align : left
+				.title
+					display   : inline-block
+					color     : $selected
+					font-size : 3vw
+					max-width : 30vw
+				.comments
+					display    : inline-block
+					margin-top : .6vw
+					color      : $selected
+					font-size  : .9vw
+					max-width  : 20vw
+				.tools
+					display    : inline-block
+					margin-top : .6vw
+					color      : $hud
+					font-size  : .9vw
+					max-width  : 20vw
+			.graphic
+				position   : absolute
+				box-shadow : 0 0 10vw black
+				background-size     : cover
+				background-position : center
+				&._0
+					width  : 30%
+					height : 30%
+				&._1
+					width  : 20%
+					height : 20%
+				&._2
+					width  : 31%
+					height : 31%
+				&._3
+					width  : 65%
+					height : 65%
+				&._4
+					width  : 15%
+					height : 15%
+				&._5
+					width  : 25%
+					height : 25%
+			&._0
+				.full
+					left : 73%
+					top  : 55%
+				.graphic
+					&._0
+						left : 4%
+						top  : 0%
+					&._1
+						left : 52%
+						top  : 83%
+					&._2
+						left : 68%
+						top  : 68%
+					&._3
+						left : 10%
+						top  : 20%
+					&._4
+						left : 63%
+						top  : 14%
+					&._5
+						left : 0%
+						top  : 68%
+			&._1
+				.full
+					left : 83%
+					top  : 47%
+				.graphic
+					&._0
+						left : 10%
+						top  : 80%
+					&._1
+						left : 47%
+						top  : 7%
+					&._2
+						left : 60%
+						top  : 65%
+					&._3
+						left : 20%
+						top  : 20%
+					&._4
+						left : 73%
+						top  : 60%
+					&._5
+						left : 0%
+						top  : 7%
+.timeline
+	position  : fixed
+	z-index   : 1
+	height    : 100%
+	max-width : 100%
+	overflow  : hidden
+	.date
+		position    : absolute
+		text-align  : center
+		font-family : 'menlo'
+		font-size   : 0.7vw
+		color       : $hud
+		width       : 3vw
+	.event
+		position      : absolute
+		border-radius : 0.1vw
+		background    : white
+		.center
+			padding : .5vw .7vw
+			width   : 7vw
+			.short
+				display   : inline-block
+				color     : $hud
+				font-size : 0.7vw
+			.full
+				position : absolute
+				left     : 0px
+				top      : 0px
+				.title
+					display   : inline-block
+					color     : $selected
+					font-size : 3vw
+					width     : 30vw
+				.location
+					display    : inline-block
+					margin-top : .6vw
+					color      : $hud
+					font-size  : .9vw
+					&:before
+						content : '\26B2 '
+				.text
+					display    : inline-block
+					margin-top : .6vw
+					color      : $hud
+					font-size  : .9vw
+					width      : 35vw
+				.comments
+					display    : inline-block
+					margin-top : .6vw
+					color      : $selected
+					font-size  : .9vw
+					max-width  : 20vw
+				.clients
+					display    : inline-block
+					margin-top : .6vw
+					max-width  : 20vw
+					opacity    : .5
+					.client
+						display : inline-block
+						height  : 1vw
+						margin  : .5vw 1vw 0 0
+			.short, .full
+				transform-origin : left top
+		&.init
+			width : 0.15vw
+			.center
+				position  : absolute
+				padding   : 0
+		
