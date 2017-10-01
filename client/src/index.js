@@ -52,16 +52,39 @@ timeline.cue.forEach(event => {
 	}
 })
 
+let timer = null
+let dimmTimeline = (bool, velocity) => {
+	let set = (opacity, translate) => {
+		timeline.timeline.style.opacity   = opacity
+		timeline.timeline.style.transform = `translateX(${translate}vw)`}
+	if (bool) {
+		if (velocity > 20) set(1, 0)
+	} else set(1, 0)
+	if (timer) clearTimeout(timer)
+	timer = setTimeout(bool => {if (bool) set(0, -5)}, 1000, bool)
+}
+
+let velocity = 0
+let oldTop = 0
 let updateOnScroll = () => {
+	velocity = Math.abs(document.body.scrollTop - oldTop)
+	oldTop   = document.body.scrollTop
 	let h = window.innerHeight / 2
 	let m = h + document.body.scrollTop
+	let dimm = false
 	timeline.cue.forEach(event => {
+		// set mapping
 		let t = event.dom.container.offsetTop
 		let b = event.dom.container.offsetHeight + t
 		let f = window.innerHeight * .4
 		event.t = fw.easeInOutQuint(
 			fw.map(m, t-f, t+f, 0, 1, true) *
 			fw.map(m, b-f, b+f, 1, 0, true))
+		// dimm
+		dimm = !dimm? 
+			event.content && 
+			event.content.projects && 
+			event.t == 1: dimm
 		// background parallax
 		// console.log(event.dom.container)
 		// update cloud
@@ -75,6 +98,7 @@ let updateOnScroll = () => {
 		// 	})
 		// }
 	})
+	dimmTimeline(dimm, velocity)
 	timeline.scroll()
 }
 

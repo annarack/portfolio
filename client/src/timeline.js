@@ -112,7 +112,7 @@ let findLeftOffset = event => {
 	return x
 }
 
-let timeline = fw.html(`<div class='timeline'></div>`)
+export let timeline = fw.html(`<div class='timeline'></div>`)
 document.body.appendChild(timeline)
 let marks = getUniqueDates(events.map(event => event.date))
 export let cue = []

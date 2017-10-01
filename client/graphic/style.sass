@@ -56,8 +56,15 @@ $selected : rgba(white, 1)
 			.graphic
 				position   : absolute
 				box-shadow : 0 0 10vw black
+				transition : .3s
 				background-size     : cover
 				background-position : center
+				// &:hover
+				// 	z-index : 100
+				// 	width   : 60% !important
+				// 	height  : 60% !important
+				// 	left    : 20% !important
+				// 	top     : 20% !important
 				&._0
 					width  : 30%
 					height : 30%
@@ -123,11 +130,13 @@ $selected : rgba(white, 1)
 						left : 0%
 						top  : 7%
 .timeline
-	position  : fixed
-	z-index   : 1
-	height    : 100%
-	max-width : 100%
-	overflow  : hidden
+	position       : fixed
+	z-index        : 1
+	height         : 100%
+	max-width      : 100%
+	overflow       : hidden
+	transition     : 1s
+	pointer-events : none
 	.date
 		position    : absolute
 		text-align  : center
@@ -143,9 +152,11 @@ $selected : rgba(white, 1)
 			padding : .5vw .7vw
 			width   : 7vw
 			.short
-				display   : inline-block
-				color     : $hud
-				font-size : 0.7vw
+				display        : inline-block
+				color          : $hud
+				font-size      : 0.7vw
+				pointer-events : all
+				cursor         : pointer
 			.full
 				position : absolute
 				left     : 0px
