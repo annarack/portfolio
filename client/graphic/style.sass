@@ -3,35 +3,52 @@ body
 	-webkit-app-region : drag
 	border-collapse    : collapse
 	margin      : 0px
-	background  : hsl(205,10%,7%)
+	background  : hsl(200,10%,5%)
 	font-family : 'helvetica neue'
-	font-size   : 2vw
+	font-size   : 1vw
 	color       : white
 	&.dev
 		&, *
 			border : 1px hsla(200,100%,50%, .5) solid
 
-$hud : rgba(white, .5)
+$hud      : rgba(white, .5)
 $selected : rgba(white, 1)
 
-.container
-	height : 100%
+.content
+	display : block
+	height  : 100%
 	&.full
 		height : 90%
-		background-size       : cover
-		background-position   : center
-		background-attachment : fixed
-		&:first-of-type, &:last-of-type
+		&:last-child
 			height : 100%
+		background-size       : cover
+		background-repeat     : no-repeat
+		background-attachment : fixed
+		background-position   : center
+	&.interview
+		padding    : 0 0 4vw
+		height     : auto
+		text-align : center
+		.q, .a
+			display    : inline-block
+			width      : 30vw
+			text-align : left
+		.q
+			color         : $hud
+			padding       : 3vw 5vw 0 0
+		.a
+			color        : &selected
+			font-size    : 1.2vw
+			padding      : 1vw 0 0 5vw
 	&.projects
 		height     : auto
+		padding    : 4vw
 		text-align : center
 		.project
 			position      : relative
 			display       : inline-block
 			width         : 75vw
 			height        : 75vw
-			margin-bottom : 10vw
 			.full
 				position   : absolute
 				z-index    : 1
@@ -45,20 +62,18 @@ $selected : rgba(white, 1)
 					display    : inline-block
 					margin-top : .6vw
 					color      : $selected
-					font-size  : .9vw
 					max-width  : 20vw
 				.tools
 					display    : inline-block
 					margin-top : .6vw
 					color      : $hud
-					font-size  : .9vw
 					max-width  : 20vw
 			.graphic
-				position   : absolute
-				box-shadow : 0 0 10vw black
-				transition : .3s
+				position            : absolute
+				transition          : .3s
 				background-size     : cover
 				background-position : center
+				box-shadow          : 0 0 10vw black
 				// &:hover
 				// 	z-index : 100
 				// 	width   : 60% !important
@@ -135,7 +150,7 @@ $selected : rgba(white, 1)
 	height         : 100%
 	max-width      : 100%
 	overflow       : hidden
-	transition     : 1s
+	transition     : 1s opacity, 1s transform
 	pointer-events : none
 	.date
 		position    : absolute
@@ -143,7 +158,7 @@ $selected : rgba(white, 1)
 		font-family : 'menlo'
 		font-size   : 0.7vw
 		color       : $hud
-		width       : 3vw
+		width       : 4vw
 	.event
 		position      : absolute
 		border-radius : 0.1vw
@@ -170,20 +185,17 @@ $selected : rgba(white, 1)
 					display    : inline-block
 					margin-top : .6vw
 					color      : $hud
-					font-size  : .9vw
 					&:before
 						content : '\26B2 '
 				.text
 					display    : inline-block
 					margin-top : .6vw
 					color      : $hud
-					font-size  : .9vw
 					width      : 35vw
 				.comments
 					display    : inline-block
 					margin-top : .6vw
 					color      : $selected
-					font-size  : .9vw
 					max-width  : 20vw
 				.clients
 					display    : inline-block
